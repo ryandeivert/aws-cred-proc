@@ -87,6 +87,20 @@ Please touch YubiKey now to generate MFA code for "arn:aws:iam::210987654321:mfa
 }
 ```
 
+## Credentials as Environment Variables
+
+If you'd to use the generated credentials with a tool other than the `aws` CLI, it's more sensible to have them
+set as environment variables. This is because AWS SDKs will not load credentials from the `~/.aws/cli/cache`
+directory. You can achieve this by using `eval` and calling the `aws-cred-proc` utility directly, specifying
+the `--variables` flag:
+
+```shell
+eval $($HOME/.aws/aws-cred-proc --profile cp-role --variables)
+```
+
+You will then have `AWS_*` environment variables set in your current shell session, and can veryfy with `env | grep AWS_`.
+
+
 ## Full Usage
 
 ```

@@ -302,7 +302,7 @@ func (s *shellCredentials) String() string {
 	lines := make([]string, ct.NumField())
 	for i := 0; i < ct.NumField(); i++ {
 		f := ct.Field(i)
-		lines[i] = fmt.Sprintf("%s=%v", strings.ToUpper(typeOfC.Field(i).Name), f)
+		lines[i] = fmt.Sprintf("export %s=%v", strings.ToUpper(typeOfC.Field(i).Name), f)
 	}
 	return strings.Join(lines, "\n")
 }
